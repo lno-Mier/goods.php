@@ -35,17 +35,13 @@
 			for ($i=0; $i < count(end($products)); $i++) { 
 				echo "<tr>";
 				foreach ($products as $val) {
-					echo "<td>$val[$i]<div class='container'>
+					echo "<td><div class='container'>
 					<form action='Add-to-cart.php'>
- 			 			<input type='submit' class='btn btn-info btn-lg' data-target='#myModal' value='В корзину' />
+						$val[$i]
+ 			 			<input type='submit' class='btn btn-info btn-lg' value='В корзину' />
  			 		</form>
 					</div></td>";
 				}
-
-	          	if (isset($_POST['products'])) {
-	          		$_SESSION['goods'] = $_POST['$val[$i]'];
-	          	}
-
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -61,24 +57,8 @@
         <div class="modal-body">
           <p>
           	<?php
-          		echo "<table><tr>";
-          		foreach ($products as $key => $value) {
-          			echo "<td>$key</td>";
-          		}
-
-          		echo "</tr>";
-
-          		for ($i=0; $i <  count(end($products)); $i++) { 
-          			echo "<tr>";
-
-          			foreach ($products as $val) {
-					echo "<td>$val[$i]</td>";
-					}
-
-					echo "</tr>";
-          		};
-
-          		echo "</tr></table>";
+          		$products = $_SESSION['good'];
+          		echo $products;
           	?>
           </p>
         </div>
