@@ -16,7 +16,6 @@
 	<?php
 		session_start(); //позволяет открывать и использовать сессии
 	?>
-	<form method="post"  action="">
 		<?php
 			$products = array(
 				"Drink" => array('Cola','coffee','Asu'),
@@ -37,8 +36,8 @@
 				echo "<tr>";
 				foreach ($products as $val) {
 					echo "<td>$val[$i]<div class='container'>
-					<form method='action'>
- 			 			<a href='Add-to-cart.php'><input type='button' class='btn btn-info btn-lg' data-target='#myModal' value='В корзину' /></a>
+					<form action='Add-to-cart.php'>
+ 			 			<input type='submit' class='btn btn-info btn-lg' data-target='#myModal' value='В корзину' />
  			 		</form>
 					</div></td>";
 				}
@@ -51,7 +50,6 @@
 			}
 			echo "</table>";
 		?>
-	</form>
 	<button type='button' class='btn btn-info btn-lg button-margin' data-toggle='modal' data-target='#myModal'>Открыть корзину</button>
 	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
