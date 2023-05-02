@@ -17,12 +17,7 @@
 		session_start(); //позволяет открывать и использовать сессии
 	?>
 		<?php
-			$products = array(
-				"Drink" => array('Cola','coffee','Asu'),
-				"Candy" => array('Choclate', 'marshmellow', 'chupa-chups'),
-				"fast-food" => array('burger', 'Duty-frie', 'pizza'),
-				"extra-product" => array('human', 'animal', 'Otaku')
-			);
+			include 'data.php';
 
 			echo "<table border='1'><tr>";
 
@@ -36,7 +31,7 @@
 				echo "<tr>";
 				foreach ($products as $val) {
 					echo "<td><div class='container'>
-					<form action='Add-to-cart.php'>
+					<form>
 						$val[$i]
  			 			<input type='submit' class='btn btn-info btn-lg' value='В корзину' />
  			 		</form>
@@ -57,8 +52,7 @@
         <div class="modal-body">
           <p>
           	<?php
-          		$products = $_SESSION['good'];
-          		echo $products;
+          		echo $_SESSION['goods'];
           	?>
           </p>
         </div>
@@ -66,7 +60,6 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
     </div>
   </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
