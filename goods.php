@@ -31,9 +31,9 @@
 				echo "<tr>";
 				foreach ($products as $val) {
 					echo "<td><div class='container'>
-					<form>
+					<form target='data.php' method='post'>
 						$val[$i]
- 			 			<input type='submit' class='btn btn-info btn-lg' value='В корзину' />
+ 			 			<input type='submit' class='btn btn-info btn-lg' value='$val[$i]' name='good' />
  			 		</form>
 					</div></td>";
 				}
@@ -52,7 +52,17 @@
         <div class="modal-body">
           <p>
           	<?php
-          		echo $_SESSION['goods'];
+          		$good = 'None';
+
+							if (isset($_POST['good']) == true) {
+								$good = $_POST['good'];
+								$_SESSION['goods'] = $good;
+								echo $_SESSION['goods'];
+							};
+							if (isset($_POST['good']) == false) {
+								echo $good;
+							}
+							
           	?>
           </p>
         </div>
