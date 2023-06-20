@@ -1,3 +1,23 @@
+<?php
+	session_start(); //позволяет открывать и использовать сессии
+	/*
+	$_SESSION['goods'] = [
+		[
+			"name"=>"Cola",
+			"cost"=>100,
+			"quantity"=>2,
+			"total"=>200
+		],
+		[
+			"name"=>"Asu",
+			"cost"=>90,
+			"quantity"=>10,
+			"total"=>900
+		]
+	];
+	die(var_dump($_SESSION));
+	*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +33,6 @@
 	</style>
 </head>
 <body>
-	<?php
-		session_start(); //позволяет открывать и использовать сессии
-	?>
 		<?php
 			include 'data.php';
 
@@ -33,7 +50,7 @@
 					echo "<td><div class='container'>
 					<form target='data.php' method='post'>
 						$val[$i]
- 			 			<input type='submit' class='btn btn-info btn-lg' value='$val[$i]' name='good' />
+ 			 			<button type='submit' class='btn btn-info btn-lg' value='$val[$i]' name='good' />В корзину</button>
  			 		</form>
 					</div></td>";
 				}
@@ -53,16 +70,16 @@
           <p>
           	<?php
           		$good = 'None';
-
-							if (isset($_POST['good']) == true) {
-								$good = $_POST['good'];
-								$_SESSION['goods'] = $good;
-								echo $_SESSION['goods'];
+          		for ($i=0; $i < 9; $i++) {
+          			if (isset($_POST['good']) == true) {
+									$good = $_POST['good'];
+									$_SESSION['goods'][$i] = $good;
+									echo $_SESSION['goods'][$i];
+								};
 							};
 							if (isset($_POST['good']) == false) {
 								echo $good;
-							}
-							
+							};
           	?>
           </p>
         </div>
